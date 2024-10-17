@@ -31,7 +31,20 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
+        if (allJobs.isEmpty()) {
+            // Example data loading
+            HashMap<String, String> job1 = new HashMap<>();
+            job1.put("Title", "Software Engineer");
+            job1.put("Employer", "Tech Corp");
+            job1.put("Location", "New York");
+            allJobs.add(job1);
 
+            HashMap<String, String> job2 = new HashMap<>();
+            job2.put("Title", "Data Analyst");
+            job2.put("Employer", "Enterprise Holdings, Inc.");
+            job2.put("Location", "San Francisco");
+            allJobs.add(job2);
+        }
         ArrayList<String> values = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
@@ -78,6 +91,12 @@ public class JobData {
             if (aValue.contains(value)) {
                 jobs.add(row);
             }
+            for (HashMap<String, String> job : allJobs) {
+                String jobValue = job.get(allJobs);
+                if (jobValue != null && jobValue.toLowerCase().contains(value.toLowerCase())) {
+                    allJobs.add(job);
+                }
+            }
         }
 
         return jobs;
@@ -94,9 +113,25 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-        // TODO - implement this method
-        return null;
+        ArrayList<HashMap<String, String>> results = new ArrayList<>();
+
+        for (HashMap<String, String> job : allJobs) {
+            for (String key : job.keySet()) {
+                String jobValue = job.get(key).toLowerCase();
+                if (jobValue.contains(value.toLowerCase())) {
+                   results.add(job);
+                    break; // No need to check other columns if a match is found
+                }
+            }
+        }
+
+
+        return results;
     }
+
+        // TODO - implement this method
+
+
 
     /**
      * Read in data from a CSV file and store it in a list

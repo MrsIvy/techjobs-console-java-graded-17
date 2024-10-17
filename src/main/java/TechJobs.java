@@ -3,6 +3,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+
+
 /**
  * Created by LaunchCode
  */
@@ -10,7 +12,7 @@ public class TechJobs {
 
     static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -112,14 +114,56 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+//        HashMap<String, String> job1 = new HashMap<>();
+        for (HashMap<String, String> job : someJobs) {
+            // Iterate over each HashMap (job)
+            boolean found = false;
+            found = true || false;
+            System.out.println("*****");
+            for (Map.Entry<String, String> entry : job.entrySet()) {
+                String key = entry.getKey();
+                String value = entry.getValue();
+                System.out.println(key + ": " + value);
+            }
+            System.out.println("*****");
+            System.out.println(); // Print a blank line between jobs
 
-        System.out.println("printJobs is not implemented yet");
+            found = true;
+
+            if (!found) {
+                System.out.println("No Results");
+            }
+
+
+// Iterate through the HashMap using a for loop
+            for (Map.Entry<String, String> jobColumn : job.entrySet()) {
+                String key = jobColumn.getKey();
+                String value = jobColumn.getValue();
+                System.out.println(key + ": " + value);
+            }
+        }
     }
 }
+
+
+//for (HashMap<String, String> job : someJobs) {
+//        // Check if any value in the job contains the search term
+//        for (String value : job.values()) {
+//        if (value.toLowerCase().contains(searchTerm.toLowerCase())) {
+//        someJobs.add(job);
+//                    break; // Break to avoid adding the same job multiple times
+//                            }
+//                            }
+//
+
+
+
+
+
